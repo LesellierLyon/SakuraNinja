@@ -72,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="60.305343511450381" y="-42.253521126760567"/>
         </scene>
-        <!--View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="0kz-2i-3Ip">
             <objects>
-                <viewController id="Y3a-pX-i2x" sceneMemberID="viewController">
+                <viewController id="Y3a-pX-i2x" customClass="GameViewController" customModule="SakuraNinja" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G88-TA-6wD">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,18 +92,34 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="4y4-i9-0XX">
-                                <rect key="frame" x="290" y="23" width="71" height="35"/>
+                                <rect key="frame" x="273" y="27" width="88" height="86"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Pause"/>
+                                <buttonConfiguration key="configuration" style="plain" image="pause"/>
                                 <connections>
-                                    <segue destination="BGK-8A-bJS" kind="show" id="on3-BZ-UjF"/>
+                                    <segue destination="BGK-8A-bJS" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="on3-BZ-UjF"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="sakura" translatesAutoresizingMaskIntoConstraints="NO" id="cLN-s3-3He">
+                                <rect key="frame" x="-100" y="388" width="90" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MnX-NS-GlC">
+                                <rect key="frame" x="168" y="274" width="57" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Test"/>
+                                <connections>
+                                    <action selector="deplace:" destination="Y3a-pX-i2x" eventType="touchUpInside" id="VBC-gN-bJ0"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Y8w-K5-sh0"/>
                     </view>
                     <navigationItem key="navigationItem" id="NwJ-uL-zsC"/>
+                    <connections>
+                        <outlet property="Fleur" destination="cLN-s3-3He" id="DDN-JJ-NTp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nxX-Oe-Kql" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -114,20 +130,33 @@
             <objects>
                 <viewController id="BGK-8A-bJS" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K4B-1q-1Yz">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="background" id="0UV-GV-9zQ">
-                                <rect key="frame" x="-62" y="-98" width="560" height="928"/>
+                                <rect key="frame" x="-62" y="-98" width="560" height="997"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="a6m-m3-qJr">
-                                <rect key="frame" x="129" y="349" width="136" height="35"/>
+                                <rect key="frame" x="92" y="349" width="209" height="104"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Menu principal"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Menu principal">
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="sue-C3-5kE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="98K-qx-TbL">
+                                <rect key="frame" x="118" y="237" width="157" height="104"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Reprendre">
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="Y3a-pX-i2x" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="Y2g-Zh-nh7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -159,11 +188,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="on3-BZ-UjF"/>
+        <segue reference="rf4-CW-a6f"/>
         <segue reference="sue-C3-5kE"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="background" width="560" height="997"/>
         <image name="logo ig" width="350" height="233"/>
+        <image name="pause" width="60" height="60"/>
         <image name="red sakura" width="100" height="100"/>
         <image name="sakura" width="90" height="90"/>
         <image name="white sakura" width="100" height="100"/>
