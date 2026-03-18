@@ -84,8 +84,8 @@
                                 <rect key="frame" x="-62" y="-98" width="560" height="997"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pQh-6p-ifq">
-                                <rect key="frame" x="149" y="77" width="95" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score : 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pQh-6p-ifq">
+                                <rect key="frame" x="139" y="77" width="114" height="36"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -104,13 +104,57 @@
                                 <rect key="frame" x="-100" y="388" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MnX-NS-GlC">
-                                <rect key="frame" x="168" y="274" width="57" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="3 vies" id="owT-u1-W51">
+                                <rect key="frame" x="27" y="48" width="96" height="45"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="vie" id="a2e-Iw-8fO">
+                                <rect key="frame" x="30" y="54" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="vie" id="8Pg-VT-06I">
+                                <rect key="frame" x="56" y="55" width="26" height="26"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="vie" id="cDG-L0-Zmc">
+                                <rect key="frame" x="87" y="56" width="31" height="31"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Partie terminée" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OWb-Jg-hZG">
+                                <rect key="frame" x="84" y="406" width="225" height="42"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="5hV-G9-qMR">
+                                <rect key="frame" x="141" y="605" width="111" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Test"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Rejouer">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" red="0.68886126889999999" green="0.68886126889999999" blue="0.68886126889999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
                                 <connections>
-                                    <action selector="deplace:" destination="Y3a-pX-i2x" eventType="touchUpInside" id="VBC-gN-bJ0"/>
+                                    <action selector="rejouer:" destination="Y3a-pX-i2x" eventType="touchUpInside" id="Ybu-Tp-iCO"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="DW8-SM-zMv">
+                                <rect key="frame" x="100" y="681" width="190" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Menu principal">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" red="0.68886126889999999" green="0.68886126889999999" blue="0.68886126889999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="yVW-cO-yzg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -119,6 +163,13 @@
                     <navigationItem key="navigationItem" id="NwJ-uL-zsC"/>
                     <connections>
                         <outlet property="Fleur" destination="cLN-s3-3He" id="DDN-JJ-NTp"/>
+                        <outlet property="boutonmenu" destination="DW8-SM-zMv" id="i2h-5I-EFc"/>
+                        <outlet property="boutonpause" destination="4y4-i9-0XX" id="ZVL-7B-agr"/>
+                        <outlet property="boutonrejouer" destination="5hV-G9-qMR" id="cl9-kq-8ja"/>
+                        <outlet property="finpartie" destination="OWb-Jg-hZG" id="gaJ-nI-Rzv"/>
+                        <outlet property="vie1" destination="a2e-Iw-8fO" id="zl9-NT-X6Y"/>
+                        <outlet property="vie2" destination="8Pg-VT-06I" id="mUP-5w-Bh6"/>
+                        <outlet property="vie3" destination="cDG-L0-Zmc" id="gkJ-ro-Rzd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nxX-Oe-Kql" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -143,6 +194,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Menu principal">
                                     <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="sue-C3-5kE"/>
@@ -154,6 +206,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Reprendre">
                                     <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="Y3a-pX-i2x" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="Y2g-Zh-nh7"/>
@@ -189,15 +242,17 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="on3-BZ-UjF"/>
-        <segue reference="rf4-CW-a6f"/>
-        <segue reference="sue-C3-5kE"/>
+        <segue reference="Y2g-Zh-nh7"/>
+        <segue reference="yVW-cO-yzg"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="3 vies" width="100" height="38"/>
         <image name="background" width="560" height="997"/>
         <image name="logo ig" width="350" height="233"/>
         <image name="pause" width="60" height="60"/>
         <image name="red sakura" width="100" height="100"/>
         <image name="sakura" width="90" height="90"/>
+        <image name="vie" width="75" height="75"/>
         <image name="white sakura" width="100" height="100"/>
     </resources>
 </document>
