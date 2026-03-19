@@ -52,11 +52,11 @@ class GameViewController: UIViewController {
         fleur3.isHidden=true
         fleur4.isHidden=true
         print(fleur1.frame.origin)
-        viewDidLoad()
-    }
+        t = Timer.scheduledTimer(timeInterval: 0.005, target: self, selector: #selector(boucle), userInfo: nil, repeats: true)
+        lancerSpawn()    }
     
     func lancerSpawn() {
-        let attente = Double(Int.random(in: 1...4)) * 0.5
+        let attente = Double(Int.random(in: 1...4)) * 0.2
         
         t2 = Timer.scheduledTimer(timeInterval: attente,
                                   target: self,
@@ -121,6 +121,11 @@ class GameViewController: UIViewController {
                         boutonmenu.isHidden = false
                         boutonrejouer.isHidden = false
                         boutonpause.isHidden = true
+                        for fleur in fleurs {
+                            fleur.isHidden = true
+                            fleur.frame.origin = CGPoint(x:-100, y:381)
+                            vitesses[fleur] = CGPoint(x:0, y:0)
+                        }
                     }
                 }
             }
