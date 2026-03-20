@@ -41,7 +41,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var fleur4: UIImageView!
     @IBOutlet weak var bombe: UIImageView!
     var fleurs : [UIImageView] = []
-    let fleur = UIImageView()
+    var fleur = UIImageView()
 
     var dernierPoint: CGPoint?
     var pointActuel: CGPoint?
