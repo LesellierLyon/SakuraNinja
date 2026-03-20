@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Pause View Controller-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="PauseViewController" customModule="SakuraNinja" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SakuraNinja" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,6 +67,9 @@
                         <color key="backgroundColor" red="0.60079308712121215" green="0.31718771305546428" blue="0.0024844342442118909" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <navigationItem key="navigationItem" id="U4R-Ke-Kji"/>
+                    <connections>
+                        <outlet property="segmentDifficulte" destination="GQp-wy-MKB" id="cvA-IE-ciz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -84,8 +87,8 @@
                                 <rect key="frame" x="-62" y="-98" width="560" height="997"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score : 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pQh-6p-ifq">
-                                <rect key="frame" x="139" y="77" width="114" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score : 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pQh-6p-ifq">
+                                <rect key="frame" x="115" y="77" width="163" height="36"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -114,6 +117,10 @@
                             </imageView>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="sakura" id="vmd-td-KuA" userLabel="Fleur4">
                                 <rect key="frame" x="-100" y="381" width="90" height="90"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="bombe" id="Pd6-b8-jsz">
+                                <rect key="frame" x="-100" y="381" width="75" height="99"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="3 vies" id="owT-u1-W51">
@@ -174,6 +181,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="NwJ-uL-zsC"/>
                     <connections>
+                        <outlet property="bombe" destination="Pd6-b8-jsz" id="ikR-pV-Bh1"/>
                         <outlet property="boutonmenu" destination="DW8-SM-zMv" id="i2h-5I-EFc"/>
                         <outlet property="boutonpause" destination="4y4-i9-0XX" id="ZVL-7B-agr"/>
                         <outlet property="boutonrejouer" destination="5hV-G9-qMR" id="cl9-kq-8ja"/>
@@ -182,6 +190,7 @@
                         <outlet property="fleur2" destination="uZt-TF-dQO" id="fC4-Rf-Ld3"/>
                         <outlet property="fleur3" destination="Cs2-Vj-ARX" id="pD7-fO-MrA"/>
                         <outlet property="fleur4" destination="vmd-td-KuA" id="FCw-bz-c1K"/>
+                        <outlet property="scorelabel" destination="pQh-6p-ifq" id="WIu-HX-swH"/>
                         <outlet property="vie1" destination="a2e-Iw-8fO" id="zl9-NT-X6Y"/>
                         <outlet property="vie2" destination="8Pg-VT-06I" id="mUP-5w-Bh6"/>
                         <outlet property="vie3" destination="cDG-L0-Zmc" id="gkJ-ro-Rzd"/>
@@ -256,13 +265,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="on3-BZ-UjF"/>
-        <segue reference="Y2g-Zh-nh7"/>
-        <segue reference="yVW-cO-yzg"/>
+        <segue reference="rf4-CW-a6f"/>
+        <segue reference="sue-C3-5kE"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="3 vies" width="100" height="38"/>
         <image name="background" width="560" height="997"/>
+        <image name="bombe" width="75" height="99"/>
         <image name="logo ig" width="350" height="233"/>
         <image name="pause" width="60" height="60"/>
         <image name="red sakura" width="100" height="100"/>
