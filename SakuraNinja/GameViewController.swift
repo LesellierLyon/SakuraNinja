@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class GameViewController: UIViewController {
 
@@ -31,6 +32,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var boutonmenu: UIButton!
     @IBOutlet weak var boutonrejouer: UIButton!
     var vitesses: [UIImageView: CGPoint] = [:]
+    var rotations: [UIImageView: CGFloat] = [:]
+
 
     @IBOutlet weak var finpartie: UILabel!
     
@@ -45,6 +48,9 @@ class GameViewController: UIViewController {
 
     var dernierPoint: CGPoint?
     var pointActuel: CGPoint?
+    
+    var explosionPlayer: AVAudioPlayer?
+    var katanaPlayer: AVAudioPlayer?
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let t = touches.first {
@@ -98,7 +104,7 @@ class GameViewController: UIViewController {
     @objc func activation(_ timer: Timer) {
         let spawnBombe = Int.random(in: 1...6) == 1
         if spawnBombe {
-            fleur = [bombe,fleur1, fleur2, fleur3, fleur4]
+            fleurs = [bombe, fleur1, fleur2, fleur3, fleur4]
         }
         for fleur in fleurs {
             if fleur.isHidden == true{
@@ -120,6 +126,8 @@ class GameViewController: UIViewController {
                         vitesses[fleur] = CGPoint(x:-maxSpeed, y:Int.random(in: -2...0))
                     }
                 }
+                fleur.layer.removeAllAnimations()
+                UIView.animate(withDuration: 2, delay: 0, options: [.repeat, .curveLinear], animations: {fleur.transform = fleur.transform.rotated(by: .pi) })
                 break
             }
         }
@@ -128,14 +136,82 @@ class GameViewController: UIViewController {
     }
 
     func couperFleur(_ fleur: UIImageView) {
+        if fleur == bombe {
+            let explosion = UIImageView(image: UIImage(named: "explosion"))
+            explosion.frame = view.bounds
+            view.addSubview(explosion)
+            
+            if let url = Bundle.main.url(forResource: "explosion", withExtension: "mp3") {
+                explosionPlayer = try? AVAudioPlayer(contentsOf: url)
+                explosionPlayer?.play()
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                explosion.removeFromSuperview()
+            }
+            
+            perdu(fleur)
+            fleurs.removeFirst()
+            return
+        }
+        
+        if let url = Bundle.main.url(forResource: "katana", withExtension: "mp3") {
+            katanaPlayer = try? AVAudioPlayer(contentsOf: url)
+            katanaPlayer?.play()
+        }
+        
+        let gauche = UIImageView(image: UIImage(named: "fleur gauche"))
+        let droite = UIImageView(image: UIImage(named: "fleur droite"))
+        
+        let midX = fleur.frame.midX
+        let midY = fleur.frame.midY
+        let w = fleur.frame.width
+        let h = fleur.frame.height
+        
+        gauche.frame = CGRect(x: midX - w, y: midY - h/2, width: w, height: h)
+        droite.frame = CGRect(x: midX, y: midY - h/2, width: w, height: h)
+        
+        view.addSubview(gauche)
+        view.addSubview(droite)
+        
+        fleur.layer.removeAllAnimations()
+        fleur.transform = .identity
         fleur.isHidden = true
         fleur.frame.origin = CGPoint(x: -100, y: 381)
         vitesses[fleur] = CGPoint(x: 0, y: 0)
+        
+        let gCenter = gauche.center
+        let dCenter = droite.center
+        
+        UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseOut, animations: {
+            gauche.center = CGPoint(x: gCenter.x - 30, y: gCenter.y + 50)
+            droite.center = CGPoint(x: dCenter.x + 30, y: dCenter.y + 50)
+            gauche.alpha = 0
+            droite.alpha = 0
+        }, completion: { _ in
+            gauche.removeFromSuperview()
+            droite.removeFromSuperview()
+        })
+        
         Score += 1
         scorelabel.text = "Score : \(Score)"
-        print("Fleur coupée 🌸")
     }
     
+    func perdu(_ fleur: UIImageView){
+        t.invalidate()
+        t2.invalidate()
+        finpartie.isHidden = false
+        boutonmenu.isHidden = false
+        boutonrejouer.isHidden = false
+        boutonpause.isHidden = true
+        for fleur in fleurs {
+            fleur.isHidden = true
+            fleur.frame.origin = CGPoint(x:-100, y:381)
+            vitesses[fleur] = CGPoint(x:0, y:0)
+            fleur.layer.removeAllAnimations()
+            fleur.transform = .identity
+        }
+    }
     
     @objc func boucle(_ timer: Timer) {
         for fleur in fleurs {
@@ -145,11 +221,16 @@ class GameViewController: UIViewController {
                     p.x += v.x
                     p.y += v.y
                 }
-                if (-100...screenWidth+100).contains(Int(p.x)){
+                if (-100...screenWidth+100).contains(Int(p.x)) {
                     fleur.frame.origin = p
                 }
                 else {
-                    nbVie+=1
+                    if fleur != bombe {
+                        nbVie+=1
+                    }
+                    else {
+                        fleurs.removeFirst()
+                    }
                     fleur.isHidden = true
                     fleur.frame.origin = CGPoint(x:-100, y:381)
                     vitesses[fleur] = CGPoint(x:0, y:0)
@@ -158,21 +239,11 @@ class GameViewController: UIViewController {
                     vie3.isHidden = (nbVie<3)
 
                     if nbVie > 2 {
-                        t.invalidate()
-                        t2.invalidate()
-                        finpartie.isHidden = false
-                        boutonmenu.isHidden = false
-                        boutonrejouer.isHidden = false
-                        boutonpause.isHidden = true
-                        for fleur in fleurs {
-                            fleur.isHidden = true
-                            fleur.frame.origin = CGPoint(x:-100, y:381)
-                            vitesses[fleur] = CGPoint(x:0, y:0)
+                            perdu(fleur)
                         }
                     }
                 }
             }
-        }
         if let p1 = dernierPoint, let p2 = pointActuel {
             
             for fleur in fleurs {
@@ -186,6 +257,8 @@ class GameViewController: UIViewController {
             dernierPoint = p2
         }
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         screenHeight = Int(UIScreen.main.bounds.height)-100
