@@ -258,8 +258,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="on3-BZ-UjF"/>
         <segue reference="Y2g-Zh-nh7"/>
-        <segue reference="sue-C3-5kE"/>
+        <segue reference="yVW-cO-yzg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="3 vies" width="100" height="38"/>
